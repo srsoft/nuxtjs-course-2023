@@ -5,7 +5,8 @@
       <NuxtLink class="mr-4" to="/">Home</NuxtLink>
       <NuxtLink class="mr-4" to="/dev">Dev</NuxtLink>
       <NuxtLink class="mr-4" to="/dev/iphone">Iphone</NuxtLink>
-      <p>Cart({{ cart.length }})</p>
+      <p class="mr-4">Cart({{ cart.length }})</p>
+      <p>Total Page Visited : {{ usePageVisitCount() }}</p>
     </div>
       <div v-if="auth.isAuthenticated">
         <NuxtLink to="/dev/profile">Profile</NuxtLink>
