@@ -20,13 +20,16 @@
 </template>
 
 <script setup lang="ts">
-const url = "https://reqres.in/api/login"
+// const url = "https://reqres.in/api/login"
+const url = "http://localhost:8086/auth/login"
 const isLoading = ref(false)
 const _error = ref(null)
 
 const form = reactive({
-  email: "eve.holt@reqres.in",
-  password: "cityslicka"
+  // email: "eve.holt@reqres.in",
+  // password: "cityslicka"
+  email: "test01@gmail.com",
+  password: "Abcd!234"
 })
 
 async function onSubmit() {
@@ -45,8 +48,14 @@ async function onSubmit() {
     return
   }
   
-  const auth = useAuth()
-  auth.value.isAuthenticated = true
-  navigateTo("/")
+  const accessToken = data.value.accessToken
+  if(accessToken) {
+    console.log('accessToken:', accessToken)
+    const auth = useAuth()
+    auth.value.isAuthenticated = true
+    navigateTo("/")
+  } else {
+    alert('login error')
+  }
 }
 </script>
