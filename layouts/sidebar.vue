@@ -1,11 +1,6 @@
 <template>
-  <main class="user-layout">
-    <nav>
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/dev">Dev</NuxtLink>
-      <NuxtLink to="/profile">profile</NuxtLink>
-      <NuxtLink to="/about">about</NuxtLink>
-    </nav>
+  <Navbar />
+  <main class="user-layout bg-gray-100">
     <article class="sidebar">
       <p>Dashboard</p>
       <p>Settings</p>
