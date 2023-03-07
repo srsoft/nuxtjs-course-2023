@@ -20,14 +20,14 @@
 </template>
 
 <script setup lang="ts">
-// const url = "https://reqres.in/api/login"
+import { useAuthStore } from '@/stores/auth'
+const authStore = useAuthStore()
+
 const url = "http://localhost:8086/auth/login"
 const isLoading = ref(false)
 const _error = ref(null)
 
 const form = reactive({
-  // email: "eve.holt@reqres.in",
-  // password: "cityslicka"
   email: "test01@gmail.com",
   password: "Abcd!234"
 })
@@ -36,10 +36,9 @@ async function onSubmit() {
   if (isLoading.value) return
   isLoading.value = true
 
-  const { data, error } = await useFetch(url, {
-    method: "post",
-    body: form
-  })
+  const { data, error } = await authStore.loginUser(form.email, form.password)
+  console.log('response data:', data.value.accessToken)
+  console.log('response error:', error.value)
 
   isLoading.value = false
   if (error.value) {
@@ -50,12 +49,14 @@ async function onSubmit() {
   
   const accessToken = data.value.accessToken
   if(accessToken) {
-    console.log('accessToken:', accessToken)
-    const auth = useAuth()
-    auth.value.isAuthenticated = true
+    localStorage.setItem("access_token", accessToken)
+    // const auth = useAuth()
+    // auth.value.isAuthenticated = true
+
     navigateTo("/")
   } else {
     alert('login error')
   }
 }
+
 </script>
