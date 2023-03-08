@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>profile</h1>
+    <h1>middleware</h1>
     <p>welcome username</p>
   </div>
 </template>

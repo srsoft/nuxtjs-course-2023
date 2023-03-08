@@ -7,15 +7,15 @@
       <NuxtLink class="mr-4" to="/dev/iphone">Iphone</NuxtLink>
       <NuxtLink class="mr-4" to="/dev/pinia">Pinia</NuxtLink>
       <NuxtLink class="mr-4" to="/dev/cookie">Cookie</NuxtLink>
-      <NuxtLink class="mr-4" to="/dev/localStorage">LocalStorage</NuxtLink>
+      <NuxtLink class="mr-4" to="/dev/middleware">middleware</NuxtLink>
       <p class="mr-4">Cart({{ cart.length }})</p>
       <p>Total Page Visited : {{ usePageVisitCount() }}</p>
     </div>
       <div v-if="authStore.isAuthenticated">
-        <NuxtLink to="/dev/profile">Profile</NuxtLink>
+        <NuxtLink to="/profile">profile</NuxtLink>
         <button @click="logout" class="ml-4">Logout</button>
       </div>
-      <NuxtLink v-else to="/login">Login</NuxtLink>
+      <NuxtLink v-else to="/auth">Login</NuxtLink>
     </nav>
 </template>
 
@@ -24,10 +24,8 @@ import { useAuthStore } from '@/stores/auth'
 const authStore = useAuthStore()
 
 const cart = useCart()
-// const auth = useAuth()
 
 function logout() {
-  // auth.value.isAuthenticated = false
-  authStore.isAuthenticated = false
+  authStore.logoutUser()
 }
 </script>

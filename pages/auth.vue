@@ -23,7 +23,6 @@
 import { useAuthStore } from '@/stores/auth'
 const authStore = useAuthStore()
 
-const url = "http://localhost:8086/auth/login"
 const isLoading = ref(false)
 const _error = ref(null)
 
@@ -36,9 +35,7 @@ async function onSubmit() {
   if (isLoading.value) return
   isLoading.value = true
 
-  const { data, error } = await authStore.loginUser(form.email, form.password)
-  console.log('response data:', data.value.accessToken)
-  console.log('response error:', error.value)
+  const { error } = await authStore.loginUser(form.email, form.password)
 
   isLoading.value = false
   if (error.value) {
@@ -47,16 +44,7 @@ async function onSubmit() {
     return
   }
   
-  const accessToken = data.value.accessToken
-  if(accessToken) {
-    localStorage.setItem("access_token", accessToken)
-    // const auth = useAuth()
-    // auth.value.isAuthenticated = true
-
-    navigateTo("/")
-  } else {
-    alert('login error')
-  }
+  navigateTo("/")
 }
 
 </script>
