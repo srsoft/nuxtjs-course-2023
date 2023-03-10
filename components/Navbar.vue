@@ -15,7 +15,7 @@
         <NuxtLink to="/profile">profile</NuxtLink>
         <button @click="logout" class="ml-4">Logout</button>
       </div>
-      <NuxtLink v-else to="/auth">Login</NuxtLink>
+      <NuxtLink v-else to="/login">Login</NuxtLink>
     </nav>
 </template>
 

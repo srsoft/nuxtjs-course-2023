@@ -1,5 +1,8 @@
 import { defineStore } from 'pinia'
 
+
+
+
 export const useAuthStore = defineStore('auth', {
     state: () => ({
         user: [],
@@ -30,7 +33,7 @@ export const useAuthStore = defineStore('auth', {
             return { error }
         },
         logoutUser(){
-            this.user = null
+            this.user = []
             this.access_token = ''
             this.isAuthenticated = false
             // localStorage.removeItem('auth')

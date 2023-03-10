@@ -4,6 +4,7 @@
     <div v-if="_error">
       <p class="bg-red-600 text-red300 text-sm p-3 text-white">{{ _error }}</p>
     </div>
+    <AuthSocialLogin />
     <form @submit.prevent="onSubmit">
       <div class="mb-6">
         <input type="text" v-model="form.email" class="form-control border border-solid">
@@ -16,6 +17,7 @@
         <span v-else>Sign in</span>
       </button>
     </form>
+    <NuxtLink to="/signup">Sign up</NuxtLink>
   </div>
 </template>
 
