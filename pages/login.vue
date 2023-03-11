@@ -37,16 +37,16 @@ async function onSubmit() {
   if (isLoading.value) return
   isLoading.value = true
 
-  const { error } = await authStore.loginUser(form.email, form.password)
-
-  isLoading.value = false
-  if (error.value) {
-    _error.value = error.value.data.error
-    console.log('_error:', _error.value)
+  await authStore.loginUser(form.email, form.password).then((status) => {
+    isLoading.value = false
+    if (status == 200) {
+      navigateTo("/")
+    } else {
+      console.log(status + ' auth error')
+    }
     return
-  }
-  
-  navigateTo("/")
+  })
+
 }
 
 </script>
